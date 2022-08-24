@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>let  var 区别</h2>
+</body>
+<script>
+    //1，声明提升
+    console.log(name);
+    var name = "ASDSF是的";
+
+    //2, var 是全局变量，没有局部作用域  变量污染
+    function fn(){
+        for(var i=0; i<10; i++){
+            console.log(i);
+        }
+        console.log(i);
+    }
+    fn();
+
+    //3, 声明覆盖 变量污染
+    var name1 = "asdfa";
+    var name1 = "asdfa";
+    console.log(name1);
+
+    //let特性
+    //1,变量不重复声明
+    // let asd = 1;
+    // let asd = 2;
+
+    //2，块级作用域， 全局 ， 函数
+    {
+        let aa = "moon";
+    }
+    // console.log(aa); // defind
+
+    //3, 变量不提升
+    // console.log(ss); //Cannot access 'ss' before initialization
+    let ss = 100; 
+
+    //4, 不影响作用域链
+    {
+        let school = "高崎小学";
+        function fn(){
+            console.log(school);
+        }
+        fn();
+    }
+</script>
+</html>

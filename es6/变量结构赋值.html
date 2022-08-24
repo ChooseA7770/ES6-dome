@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 按照一定模式从数组和对象中提取值，对变量进行赋值
+    //1,数组结构
+    const BOOKS = ["三国演义","西游记","红楼梦","水浒传"];
+    let [san,xi,hong,shui] = BOOKS;
+    console.log(san);
+    console.log(xi);
+    console.log(hong);
+    console.log(shui);
+    console.log(...BOOKS);
+    //2,对象解构
+    const zhu = {
+        name:"诸葛亮",
+        nickname:"孔明",
+        skill:function(){
+            console.log("借东风");
+        }
+    }
+    // 相当于声明三个变量并赋值
+    // let {name,nickname,skill} = zhu;
+    // console.log(name);
+    // console.log(nickname);
+    // console.log(skill);
+    // zhu.skill();
+
+    //单独解构
+    let {skill} = zhu;
+    skill();
+
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>const 定义常量</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //值不能修改的量位常量
+    const a = "moon";
+
+    //1 一定要赋值
+    //const b; //error : Missing initializer in const declaration
+
+    //2 一般使用大写 ()
+    const TAME_NAME = "EDG"
+
+    //3 常量的值不能修改
+    //TAME_NAME = "RNG"; //error : Assignment to constant variable.
+
+    //4,块级作用域
+    {
+        const BOOK_NAME = "《双城记》";
+    }
+    // console.log(BOOK_NAME);//error : BOOK_NAME is not defined
+
+    //5, 对于对象和数组的元素修改，不算做对常量的修改
+    const TAME_EDG = ["Flandre", "JieJie", "Scout","Viper","Meiko"];
+    //并未改变 TAME_EDG 指向的常量地址
+    TAME_EDG.push("ClearLove");
+    // TAME_EDG = 100 // error
+    console.log(TAME_EDG);
+</script>
+</html>

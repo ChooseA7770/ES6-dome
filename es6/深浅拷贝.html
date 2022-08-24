@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    //深拷贝：互不影响
+
+    //浅拷贝,数组对象赋值 会互相影响数据
+    // let arr = [1, 2, 3, 4, 5];
+    // let newArr = arr;
+    // newArr.push(6);
+    // console.log(arr,newArr);
+
+    //结构赋值  针对一维数组，对象深拷贝
+    let arr = [1, 2, 3, 4, 5];
+    let newArr = [...arr];
+    newArr.push(6);
+    console.log(arr, newArr);
+    // 二维对象，数组浅
+    let arr1 = [
+      [1, 2, 3, 4, 5],
+      [1, 2, 3],
+    ];
+    let newArr1 = [...arr1];
+    newArr1[0].push(666);
+    console.log(arr1, newArr1);
+
+    //深拷贝
+    let list = [
+      { id: 1, name: "asd" },
+      { id: 2, name: "asd1" },
+      { id: 3, name: "asd2" },
+    ];
+    //转字符串，反序列化
+    let newList = JSON.parse(JSON.stringify(list));
+    newList.push({ id: 4 });
+    console.log(list, newList);
+
+    //引用数据类型
+    function deepClone(source) {
+      //原型链，判断引用的值是数组或是对象
+      //constructor => 构造器（基类） Array.Object
+      const targetObj = source.constructor === Array ? [] : {};
+      //循环值的内容
+      for (let keys in source) {
+        //判断属性
+        if (source.hasOwnProperty(keys)) {
+          //判断是否有值,数据类型 是否为对象
+          if (source[keys] && typeof source[keys] === "object") {
+            //判断引用值中的数据类型
+            targetObj[keys] = source[keys].constructor === Array ? [] : {};
+            // 递归
+            targetObj[keys] = deepClone(source[keys]);
+          } else {
+            targetObj[keys] = source[keys];
+          }
+        }
+      }
+      return targetObj
+    }
+
+    let objC = {
+        aa:"asdfr",
+        ss:{
+            age:18,
+            str:"3425"
+        },
+        arr:[1,2,3,4,5]
+    }
+    let newOBJ = deepClone(objC);
+    newOBJ.aa = "asfertggfg";
+    newOBJ.arr.push("ddddd");
+    console.log(objC,newOBJ);
+  </script>
+</html>
