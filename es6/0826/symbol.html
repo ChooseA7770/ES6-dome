@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>symbol</title>
+  </head>
+  <body></body>
+  <script>
+    // 创建symbol  值是唯一的，用来解决命名冲突的问题
+    let s1 = Symbol();
+    console.log(s1, typeof s1);
+    //描述字符串 表示Symbol为谁创建
+    let s2 = Symbol("foo");
+    let s3 = Symbol("foo");
+    console.log(s2 === s3); // false
+
+    // Symbol.for 创建  通过描述字符串的出唯一Symbol值
+    let s4 = Symbol.for("foo"); //函数对象
+    let s5 = Symbol.for("foo");
+    console.log(s4 === s5); // true
+
+    // 不能运算比较,字符串拼接
+
+    // symbol使用  对象添加属性和方法
+    let game = {
+      name: "俄罗斯方块",
+      up(){
+        console.log("向上");
+      },
+      down(){
+        console.log("向下");
+      }
+    };
+
+    // 添加方法一  在不清楚game对象当中的数据情况下
+    let Obj = {
+      up: Symbol(),
+      down: Symbol(),
+    };
+
+    game[Obj.up] = function () {
+      console.log("向上");
+    };
+    game[Obj.down] = function () {
+      console.log("向下");
+    };
+    //不改变原有对象的数据添加方法
+    console.log(game); //Object
+    game.up();
+    // 调用symbol创建的函数
+    console.log(game[Reflect.ownKeys(game)[3]]());
+    
+    // 添加方法二
+    // let youxi =
+  </script>
+</html>

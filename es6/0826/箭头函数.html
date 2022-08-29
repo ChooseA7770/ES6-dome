@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>箭头函数</title>
+  </head>
+  <body></body>
+  <script>
+    //声明函数
+    let fn = (a, b) => {
+      return a + b;
+    };
+    let result = fn(1, 2);
+    console.log(result);
+    // 特性1： *this静态，this 始终指向函数声明时所在作用域下的this的值*
+    function getName() {
+      console.log(this.name);
+    }
+
+    let getName1 = () => {
+        let name = "鲁迅";
+      console.log(this.name); //韩寒
+    };
+    window.name = "韩寒";
+    const Obj = {
+      name: "王小波",
+    };
+    //直接调用
+    getName(); //韩寒
+    getName1(); //韩寒
+    //call调用
+    getName.call(Obj); //王小波 
+    getName1.call(Obj); //韩寒 windos下声明
+
+    //特性2 不能作为构造实例化对象
+    let Person = (name,age) =>{
+        this.name = name;
+        this.age = age;
+    }
+    // let me = new Person("lu",20);
+    // console.log(me); // error: Person is not a constructor
+
+    //特性3 不能使用 arguments 变量
+    let fn3 = () =>{
+        console.log(arguments);
+    }
+    // fn3(1,2,3); // error: arguments is not defined
+
+    //简写
+    // 省略小括号 形参有且只有一个时
+    let add = m => {
+        return m + m;
+    }
+    console.log(add(5)); // 10
+
+    // 省略花括号 ， 当代码体只有一条语句， 语句执行结果就是函数返回值
+    let pow = (m) => m * m;
+    console.log(pow(6)); // 36
+
+  </script>
+</html>

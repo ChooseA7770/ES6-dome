@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扩展运算符</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+<script>
+    // ... 扩展运算符能将 数组 转换为逗号分隔的 参数序列
+    const arr = ["aa","bb","cc","dd"];
+    // 转换为 => aa,bb,cc,dd
+    function fn(){
+        console.log(arguments);
+    }
+    fn(...arr);
+
+    // 扩展运算符应用
+    //1, 数组的合并
+    const TEMA_EDG = ["Meiko","Viper"];
+    const TEMA_TES = ["JackeyLove","Mark"];
+    //es5
+    // const TEMA_ALL = TEMA_EDG.concat(TEMA_TES);
+    // console.log(TEMA_ALL);
+    //es6 运算符
+    const TEMA_ALL = [...TEMA_EDG,...TEMA_TES];
+    console.log(TEMA_ALL);
+
+    //数组克隆
+    const TEMA_RNG = ["Gala","Ming"];
+    const TEMA_GNR = [...TEMA_RNG];
+    console.log(TEMA_GNR);
+
+    //伪数组 => 真数组
+    const divs = document.querySelectorAll("div");
+    const divArr = [...divs];
+    console.log(divArr);
+</script>
+</html>

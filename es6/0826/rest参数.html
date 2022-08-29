@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rest参数</title>
+  </head>
+  <body></body>
+  <script>
+    // rest参数，用于获取函数的实参，用来代替arguments
+    //es5
+    function date() {
+      console.log(arguments); // 对象
+    }
+    date("aa", "bb", "cc");
+    // rest参数
+    function date1(...args) {
+      // rest参数必须放置在最后
+      console.log(args); //数组 可增加对数据处理灵活度
+    }
+    // date1("aa","bb","cc");
+    date1({
+      name: "aa",
+      age: "19",
+      sex: "男",
+    });
+  </script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简化对象写法</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 在花括号中直接写变量和函数
+    let name = "鲁迅";
+    let change = function () {
+        console.log("作家");
+    }
+
+    const obj = {
+        name,
+        change,
+        improve(){
+            console.log("狂人日记");
+        },
+    }
+    console.log(obj,obj.change);
+
+</script>
+</html>
